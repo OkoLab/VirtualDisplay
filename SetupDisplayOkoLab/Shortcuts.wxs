@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <?include Variables.wxi?>
+  
+	<Fragment>
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="*">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+                  Name="$(var.ProductName)"
+                  Description="My Application Description"
+                  Target="[INSTALLFOLDER]VirtualDisplay.exe"
+                  WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\$(var.Manufacturer)\$(var.ProductName)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="ApplicationShortcutDesktop" Guid="{23607AC4-B138-48B6-AE6F-D8DAB8FF9ABF}">
+        <Shortcut Id="ApplicationDApplicationProgramsFolderesktopShortcut"
+                  Name="$(var.ProductName)"
+                  Description="Comment field in your shortcut"
+                  Target="[INSTALLFOLDER]VirtualDisplay.exe"
+                  WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="DesktopFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\$(var.Manufacturer)\$(var.ProductName)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+	</Fragment>
+</Wix>

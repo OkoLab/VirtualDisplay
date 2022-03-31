@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+  <?define ProductName="Virtual Display" ?>
+  <?define ProductVersion="1.0.2" ?>
+  <?define ProductCode="*"?>
+  <?define UpgradeCode="{A29CF935-49AE-44E4-8043-BF241F69D764}"?>
+  <?define Manufacturer="paradig"?>
+  <?define VirtualDisplay_TargetDir=$(var.VirtualDisplay.TargetDir)?>
+</Include>

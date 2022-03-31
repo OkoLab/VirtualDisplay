@@ -1,0 +1,28 @@
+﻿<Window x:Class="VirtualDisplay.Dialogs.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:VirtualDisplay.Dialogs"
+        mc:Ignorable="d">
+    <Grid Width="400" Height="200" HorizontalAlignment="Center">
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="DeleteForever" Foreground="#FF31577E" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"/>
+                <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0">
+                                Вы точно хотете удалить парные кнопки?
+                </TextBlock>
+            </StackPanel>
+            <Separator Background="#b6b8c3" Width="400"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 15 0">
+                <Button Click="OnSelectYes" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4" VerticalAlignment="Center" Foreground="#FF31577E">
+                    Подтвердить
+                </Button>
+                <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4 4 25 4" VerticalAlignment="Center" Foreground="#FF31577E">
+                    Отмена
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

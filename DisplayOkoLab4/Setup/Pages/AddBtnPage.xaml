@@ -1,0 +1,107 @@
+﻿<Page x:Class="VirtualDisplay.AddBtnPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d">
+    <!--
+    <Page.Resources>
+        <materialDesign:PackIcon x:Key="Yes"  Kind="BellOutline" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="LimeGreen" VerticalAlignment="Center"/>
+        <materialDesign:PackIcon x:Key="No"  Kind="BellOffOutline" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="OrangeRed" VerticalAlignment="Center"/>
+    </Page.Resources>
+-->
+
+    <materialDesign:DialogHost x:Name="DialogDeleteBtnPairs" BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                   Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
+        <materialDesign:DialogHost.DialogContent>
+            <Grid Width="400" Height="200" HorizontalAlignment="Center">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="DeleteForever" Foreground="#FF31577E" HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"/>
+                        <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 0 0 0">
+                                Вы точно хотите удалить парные кнопки?
+                        </TextBlock>
+                    </StackPanel>
+                    <Separator Background="#b6b8c3" Width="400"/>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="OnSelectYes" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4" VerticalAlignment="Center" Foreground="#FF31577E">
+                            Подтвердить
+                        </Button>
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4 4 25 4" VerticalAlignment="Center" Foreground="#FF31577E">
+                            Отмена
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </materialDesign:DialogHost.DialogContent>
+    <Grid>
+        <!--
+        <materialDesign:DialogHost Name="SaveButtonsPairDialog"  BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                   Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Width="380" Height="175" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="SerialPort" Foreground="#FF31577E" Margin="15 35 15 0" Width="50" Height="50"/>
+                        <TextBlock Style="{StaticResource MaterialDesignBody1TextBlock}">
+                            Кнопочная пара вызов - отмена сохранена
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+        -->
+        <!--
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        -->
+        <!--
+        <GroupBox
+            Header="Конструктор создания парных кнопок вызова-отмены"
+            Style="{DynamicResource MaterialDesignGroupBox}"
+            Margin="16 16 100 16"
+            materialDesign:ColorZoneAssist.Mode="PrimaryDark"
+            Height="300">
+            <StackPanel>
+                <Frame x:Name="MainFrame" Height="200"/>
+                <StackPanel Orientation="Horizontal" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 30 0">
+                    <Button Content="Назад" Name="Back_btn" IsEnabled="False" Click="OnClick_Back" Style="{StaticResource MaterialDesignRaisedLightButton}" Background="#FF31577E" Foreground="White"  Height="45"/>
+                    <Button Content="Далее" Name="Next_btn" Click="OnClick_Next"  Style="{StaticResource MaterialDesignRaisedLightButton}" Background="#FF31577E" Foreground="White" Margin="10 0 0 0" Height="45"/>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        -->
+        
+        
+            <GroupBox
+                x:Name="Constructor_gb"
+                Style="{DynamicResource MaterialDesignCardGroupBox}"
+                Margin="16 16 100 16" Height="350" materialDesign:ColorZoneAssist.Mode="Light">
+                <GroupBox.HeaderTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon
+                            Kind="CallSplit" Height="32" Width="32" VerticalAlignment="Center" />
+                        <TextBlock Margin="8,0,0,0" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubtitle1TextBlock}" 
+                                   Text="Конструктор создания парных кнопок вызова-отмены"/>
+                    </StackPanel>
+                </DataTemplate>
+            </GroupBox.HeaderTemplate>
+                    
+            <StackPanel>
+                    <Frame x:Name="MainFrame" Height="200"/>
+                    <Separator Background="#b6b8c3" Margin="0 15 0 15"/>
+                    <StackPanel Orientation="Horizontal" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0 0 30 0">
+                        <Button Content="Назад" Name="Back_btn" IsEnabled="False" Click="OnClick_Back" Style="{StaticResource MaterialDesignRaisedLightButton}" Background="#FF31577E" Foreground="White"  Height="45"/>
+                        <Button Content="Далее" Name="Next_btn" Click="OnClick_Next"  Style="{StaticResource MaterialDesignRaisedLightButton}" Background="#FF31577E" Foreground="White" Margin="10 0 0 0" Height="45"/>
+                    </StackPanel>
+            </StackPanel>
+        </GroupBox>    
+        
+        
+    </Grid>
+
+    </materialDesign:DialogHost>
+</Page>

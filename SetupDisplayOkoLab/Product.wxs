@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension"
+     xmlns:wixloc="http://schemas.microsoft.com/wix/2006/localization">
+	
+  <?include Variables.wxi?>
+  
+	<Product Id="$(var.ProductCode)" Name="$(var.ProductName)" Language="1049" Version="$(var.ProductVersion)" Manufacturer="$(var.Manufacturer)" UpgradeCode="$(var.UpgradeCode)">
+		<Package InstallerVersion="200" InstallPrivileges="elevated" AdminImage = "yes"  Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate EmbedCab="yes" />
+    
+
+		<Feature Id="ProductFeature" Title="SetupDisplayOkoLab" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+			<ComponentGroupRef Id="Melody_files" />
+			<ComponentGroupRef Id="x64_f" />
+			<ComponentGroupRef Id="x86_f" />
+      <ComponentRef Id="ApplicationShortcut" />
+      <ComponentRef Id="ApplicationShortcutDesktop" />
+      <ComponentRef Id="okoDB"/>
+		</Feature>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" /> 
+    <WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="license.rtf" />
+		<UIRef Id="WixUI_InstallDir" />
+    <!--<Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Спасибо за установку Виртуального дисплея." />-->
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+			    <Directory Id="INSTALLFOLDER" Name="$(var.ProductName)">
+					<!--<Directory Id="Melody" Name="Melody" /> -->
+                  <Directory Id="x64_dirID" Name="x64" />
+                  <Directory Id="x86_dirID" Name="x86" />
+            </Directory>        
+	    </Directory>
+
+      <Directory Id="CommonAppDataFolder">
+        <Directory Id="db_dir" Name="$(var.ProductName)">
+          <Component Id="okoDB" Guid="EABEDF39-1A1F-438D-8394-B4CD4CDC6673" >
+            <File Source="$(var.VirtualDisplay_TargetDir)\okoDB.db">
+              <!--Sets file permissions-->
+              <util:PermissionEx User="Everyone" GenericAll="yes" />
+            </File>
+          </Component>
+			<Directory Id="Melody" Name="Melody" />
+        </Directory>
+
+      </Directory>
+
+
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="$(var.ProductName)" />        
+      </Directory>
+      <Directory Id="DesktopFolder" Name="Desktop" />
+		</Directory>
+	</Fragment>
+
+</Wix>

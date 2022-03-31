@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="VirtualDisplay.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ComPortName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">No set</Value>
+    </Setting>
+    <Setting Name="SoundValue" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">50</Value>
+    </Setting>
+    <Setting Name="Version" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">1.0.1</Value>
+    </Setting>
+    <Setting Name="DefaultMelody" Type="System.String" Scope="User">
+      <Value Profile="(Default)">default_melody.mp3</Value>
+    </Setting>
+    <Setting Name="Melody_time" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

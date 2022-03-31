@@ -1,0 +1,15 @@
+﻿<Window x:Class="VirtualDisplay.Dialogs.TakeOutTheCableDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VirtualDisplay.Dialogs"
+        mc:Ignorable="d"
+        Title="TakeOutTheCableDialog" Height="200" Width="400" Background="#FF31577E" Visibility="Visible" WindowStyle="None" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Cursor="Help">
+    <Grid>
+        <TextBlock Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource MaterialDesignSubtitle2TextBlock}">
+                Кабель вынут из COM порта.
+            Проверьте подключение.
+        </TextBlock>
+    </Grid>
+</Window>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <?define VirtualDisplay_TargetDir=$(var.VirtualDisplay.TargetDir)?>
+  
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER" Source="$(var.VirtualDisplay_TargetDir)">
+      <!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+      <!-- <Component Id="ProductComponent"> -->
+      <!-- TODO: Insert files, registry keys, and other resources here. -->
+      <!-- </Component> -->
+      <Component Id="VirtualDisplay.exe" Guid="b0f981b4-1901-4303-a414-d9daf43f9938">
+        <File Id="VirtualDisplay.exe" Name="VirtualDisplay.exe"/>
+      </Component>
+      <Component Id="VirtualDisplay.exe.config" Guid="95470d46-f8c0-48e5-8f5d-cb8c13347169">
+        <File Id="VirtualDisplay.exe.config" Name="VirtualDisplay.exe.config" />
+      </Component>
+      <Component Id="MaterialDesignThemes.Wpf.dll" Guid="7eac8354-7fec-475c-b26b-4468fb473033">
+        <File Id="MaterialDesignThemes.Wpf.dll" Name="MaterialDesignThemes.Wpf.dll"/>
+      </Component>
+      <Component Id="LiveCharts.Wpf.dll" Guid="26b47467-9353-4e51-8e4e-9cc1199e19b2">
+        <File Id="LiveCharts.Wpf.dll" Name="LiveCharts.Wpf.dll"/>
+      </Component>
+      <Component Id="Dragablz.dll" Guid="86aded5d-b58e-4e19-859a-2ce4e8849fd1">
+        <File Id="Dragablz.dll" Name="Dragablz.dll"/>
+      </Component>
+      <Component Id="SKGL.dll" Guid="87974aa9-f05e-4095-9f02-73f537f14369">
+        <File Id="SKGL.dll" Name="SKGL.dll"/>
+      </Component>
+      <Component Id="LiveCharts.dll" Guid="8fdd6472-c494-421f-8012-9aaf617aea18">
+        <File Id="LiveCharts.dll" Name="LiveCharts.dll"/>
+      </Component>
+      <Component Id="System.Data.SQLite.dll" Guid="53ea0c06-289c-47b9-bc82-8655880b1039">
+        <File Id="System.Data.SQLite.dll" Name="System.Data.SQLite.dll"/>
+      </Component>
+      <Component Id="Dapper.dll" Guid="fcdfa686-c83b-4eec-bebf-6f5c54862268">
+        <File Id="Dapper.dll" Name="Dapper.dll"/>
+      </Component>
+      <Component Id="MaterialDesignColors.dll" Guid="*">
+        <File Id="MaterialDesignColors.dll" Name="MaterialDesignColors.dll"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  
+  <!--
+  <Fragment>
+    <ComponentGroup Id="Application_data" Directory="db_dir1">
+      <Component Id="okoDB.db" Guid="*">
+        <File Id="okoDB.db" Name="okoDB.db"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  -->
+  
+  <Fragment>
+    <ComponentGroup Id="Melody_files" Directory="Melody" Source="$(var.VirtualDisplay_TargetDir)Melody\">
+      <Component Id="Melody_default_melody.mp3" Guid="2e38d75a-b281-4007-b2ec-17ca3cba1530">
+        <File Id="Melody_default_melody.mp3" Name="default_melody.mp3"/>
+      </Component>
+      <Component Id="Melody_in_the_end.mp3" Guid="bed991f0-dccd-4b5f-8aee-7d5f65d8766d">
+        <File Id="Melody_in_the_end.mp3" Name="in_the_end.mp3"/>
+      </Component>
+      <Component Id="Melody_iphoneglass.mp3" Guid="2cef7ebd-b951-4e41-a2a0-dfb5664f2793">
+        <File Id="Melody_iphoneglass.mp3" Name="iphoneglass.mp3"/>
+      </Component>
+      <Component Id="Melody_sms.mp3" Guid="a14266d8-b420-400d-9c2e-10f38c26391e">
+        <File Id="Melody_sms.mp3" Name="sms.mp3"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="x64_f" Directory="x64_dirID" Source="$(var.VirtualDisplay_TargetDir)x64\">
+      <Component Id="SQLite.Interop.dll" Guid="857BEDDE-A1B3-4592-A415-DE4D62D53DA2">
+        <File Id="SQLite.Interop.dll" Name="SQLite.Interop.dll"/>
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="x86_f" Directory="x86_dirID" Source="$(var.VirtualDisplay_TargetDir)x86\">
+      <Component Id="SQLite.Interop2.dll" Guid="FDB24920-9918-4828-8814-BA940E546A32">
+        <File Id="SQLite.Interop2.dll" Name="SQLite.Interop.dll"/>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+
+  <!--
+  <Fragment> 
+    <ComponentGroup Id="x64_files" Directory="x64">
+      <Component Id="SQLite.Interop.dll" Guid="857BEDDE-A1B3-4592-A415-DE4D62D53DA2">
+        <File Id="SQLite.Interop.dll" Name="SQLite.Interop.dll" Source="$(var.VirtualDisplay_TargetDir)x64\SQLite.Interop.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="x86_files" Directory="x86">
+      <Component Id="SQLite.Interop.dll" Guid="FDB24920-9918-4828-8814-BA940E546A32">
+        <File Id="SQLite.Interop.dll" Name="SQLite.Interop.dll" Source="$(var.VirtualDisplay_TargetDir)x86\SQLite.Interop.dll" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+  -->
+</Wix>

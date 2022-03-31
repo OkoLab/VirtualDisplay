@@ -1,0 +1,73 @@
+﻿<Page x:Class="VirtualDisplay.DisplaySetup.Pages.DisplayGeneralSettingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:properties="clr-namespace:VirtualDisplay.Properties"
+      xmlns:local="clr-namespace:VirtualDisplay"
+      mc:Ignorable="d"
+      Title="GeneralSettingPage" Loaded="Page_Loaded">
+    <Page.Resources>
+        <materialDesign:PackIcon x:Key="Play1"  Kind="PlayArrow" Width="35" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" VerticalAlignment="Center"/>
+        <materialDesign:PackIcon x:Key="Stop1"  Kind="Pause" Width="35" Height="35" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" VerticalAlignment="Center"/>
+        <materialDesign:PackIcon x:Key="VolumeOff"  Kind="VolumeOff" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" VerticalAlignment="Center"/>
+        <materialDesign:PackIcon x:Key="VolumeMedium"  Kind="VolumeMedium" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" VerticalAlignment="Center"/>
+        <materialDesign:PackIcon x:Key="VolumeHigh"  Kind="VolumeHigh" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" VerticalAlignment="Center"/>
+    </Page.Resources>
+    <Grid Margin="80 100 0 0">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}" Margin ="5 0 0 0"
+                                       VerticalAlignment="Center" Text="Выберете файл для звонка при вызове" Foreground="#b6b8c3"/>
+                    <ComboBox Name="DirectoriesComboBox" materialDesign:HintAssist.HintOpacity=".26" Margin="10 10 0 0" Foreground="#FF31577E" SelectionChanged="DirectoriesComboBox_SelectionChanged">
+                        <ComboBoxItem IsSelected="False">
+                            <Button ToolTip="Добавить мелодию" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Margin="2 0 2 0"  Click="BillOpenFile">
+                                <StackPanel Orientation="Horizontal">
+                                    <materialDesign:PackIcon Kind="Add" Width="15" Height="15" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" VerticalAlignment="Center"/>
+                                    <TextBlock Style="{StaticResource MaterialDesignBody2TextBlock}">добавить мелодию</TextBlock>
+                                </StackPanel>
+                            </Button>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource MaterialDesignCaptionTextBlock}" Margin ="20 0 0 0"
+                                       VerticalAlignment="Center" Text="Установите время проигрыша мелодии (секунды)" Foreground="#b6b8c3"/>
+                    <ComboBox Name="Music_time_cb" Foreground="#FF31577E" Margin ="20,10,0,0" ToolTip="Установить время проигрыша мелодии (секунды)" materialDesign:HintAssist.HintOpacity=".26" SelectionChanged="Music_time_Selected">
+                        <ComboBoxItem>3</ComboBoxItem>
+                        <ComboBoxItem>5</ComboBoxItem>
+                        <ComboBoxItem>10</ComboBoxItem>
+                        <ComboBoxItem>20</ComboBoxItem>
+                        <ComboBoxItem>25</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+                <Button Name="Calling_MediaButton" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Воспроизвести" Margin="20,23,0,13" Click="CallingPlay">
+                    <DynamicResource ResourceKey="Play1"/>
+                </Button>
+                <Button Name="Mute_btn" Style="{StaticResource MaterialDesignIconButton}" ToolTip="Громкость" Margin="0,22,0,13" Click="ClickMuteButton">
+                    <DynamicResource ResourceKey="VolumeMedium"/>
+                </Button>
+                <Slider Name="Volume_slider"  Margin="0,36,0,13" Value="{Binding Source={x:Static properties:Settings.Default}, Path=SoundValue, Mode=OneWay}" Minimum="0" Maximum="100" TickFrequency="5" ToolTip="Громкость" Width="150" Foreground="#FF31577E" ValueChanged="VolumeSlider_ValueChanged"/>
+            </StackPanel>
+            <StackPanel Visibility="Hidden" Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="SerialPort" Foreground="#FF31577E" Margin="15 35 15 0" Width="50" Height="50"/>
+                    <ComboBox Name="LoadPorts_cb" VerticalAlignment="Top" Margin="0 40 15 0" materialDesign:HintAssist.Hint="Выберете порт подключения усилителя" Width="260" ItemsSource="{Binding ports_list}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.HintOpacity=".70"/>
+                </StackPanel>
+                <StackPanel IsEnabled="False" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                    <Button Click="OnSelectComPort" Style="{DynamicResource MaterialDesignFlatButton}" Margin="0 15 0 0" VerticalAlignment="Center" Foreground="#FF31577E">
+                        Подключение
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <Button Width="300" Content="Удалить настроенные кнопки" Height="50" VerticalAlignment="Center" HorizontalAlignment="Left"
+                    Background="#FF31577E" Foreground="White" Margin="0 20"  Click="Delete_setupBD"/>
+
+            <Button Width="300" Content="Очистить лог событий в БД" Height="50" VerticalAlignment="Center" HorizontalAlignment="Left"
+                    Background="#FF31577E" Foreground="White" Click="Delete_callingBD"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

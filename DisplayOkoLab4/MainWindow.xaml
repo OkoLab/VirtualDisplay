@@ -1,0 +1,88 @@
+﻿<Window x:Class="VirtualDisplay.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{StaticResource MaterialDesignFont}"
+        Name="MainWin"
+        Title="Виртуальный дисплей v1.0.2 - www.paradig.ru" WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized" Closing="OnClosingWindow" Loaded="OnLoadedWindow" >
+    <Grid>
+        <materialDesign:DialogHost Name="SelectPortDialog"  BorderBrush="{DynamicResource MaterialDesignDivider}" 
+                                   Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
+            <materialDesign:DialogHost.DialogContent>
+                <Grid Width="380" Height="175" HorizontalAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="SerialPort" Foreground="#FF31577E" Margin="15 35 15 0" Width="50" Height="50"/>
+                        <ComboBox Name="LoadPorts_cb" VerticalAlignment="Top" Margin="0 40 15 0" materialDesign:HintAssist.Hint="Выберете порт подключения усилителя" Width="260" ItemsSource="{Binding ports_list}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.HintOpacity=".70"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="15">
+                        <Button Click="OnSelectComPort" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4" VerticalAlignment="Center" Foreground="#FF31577E">
+                            Подтвердить
+                        </Button>
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{DynamicResource MaterialDesignFlatButton}" Margin="4 4 25 4" VerticalAlignment="Center" Foreground="#FF31577E">
+                            Отмена
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="30*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid x:Name="GridMain" Grid.Row="0" Margin="210 0 0 0"/>
+
+                    <Grid Grid.Row="1" VerticalAlignment="Bottom">
+                        <StackPanel>
+                            <Separator Background="#b6b8c3" Margin="200 0 20 0"/>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Name="Antenna_pi" Kind="Antenna" Foreground="Green" VerticalAlignment="Center" Height="25" Width="25" Margin="210 10 0 15"  Background="{x:Null}" BorderBrush="{x:Null}"/>
+                                <TextBlock Name="Cp_status_tb" Style="{StaticResource MaterialDesignCaptionTextBlock}" Margin="10 10 0 15" >Состояние приемника:</TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </ScrollViewer>
+        </materialDesign:DialogHost>
+        <Grid x:Name="GridMenu" Width="200" HorizontalAlignment="Left" Background="#FF31577E">
+            <StackPanel>
+                <Grid Height="40" Background="White" >
+                </Grid>
+                <ListView x:Name="ListViewMenu" Foreground="#FF5C99D6" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged" Background="#FF5C99D6">
+                    <ListViewItem IsSelected="True"  Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="DesktopMac" VerticalAlignment="Center"  Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Дисплей" VerticalAlignment="Center" Margin="20 10" />
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem>
+                        <StackPanel Orientation="Horizontal"  Height="60">
+                            <materialDesign:PackIcon Kind="ClipboardTextOutline" VerticalAlignment="Center"  Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Статистика" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Name="DisplaySetup_lvi">
+                        <StackPanel Orientation="Horizontal"  Height="60">
+                            <materialDesign:PackIcon Kind="Settings" VerticalAlignment="Center"  Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Настройка" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Name="Setup_lvi" Visibility="Hidden">
+                        <StackPanel Orientation="Horizontal"  Height="60">
+                            <materialDesign:PackIcon Kind="Settings" VerticalAlignment="Center"  Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Настройка" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

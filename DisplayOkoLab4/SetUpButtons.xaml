@@ -1,0 +1,56 @@
+﻿<Window x:Class="DisplayOkoLab4.SetUpButtons"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DisplayOkoLab4"
+        mc:Ignorable="d"
+        Title="Настройка кнопок вызова персонала" Height="600" Width="800" ResizeMode="NoResize" ShowInTaskbar="False" Closing="Window_Closing" Name="SetUpButtonWindow">
+    <Grid>
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>Добавить кнопки</TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox TextWrapping="NoWrap" Text="Введите название кнопки" Margin="20" Width="200" Height="30" MaxLength="20"  BorderThickness="1" BorderBrush="DarkBlue" Name="txtBox_NameOfButton" GotFocus="txtBox_NameOfButton_GotFocus"/>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" >После  выбора названия кнопки нажмите на кнопку вызова</TextBlock>
+                        </StackPanel>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" >Таблица сохраненных кнопок</TextBlock>
+                        <ScrollViewer CanContentScroll="True" Height="250" HorizontalScrollBarVisibility="Auto" >
+                            <ListView Name="SetUpBtnList" ItemsSource="{Binding btnlist}" BorderBrush="AliceBlue" Margin="10" BorderThickness="1" Background="#FFBAB7B7" >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Название сохраненной кнопки" DisplayMemberBinding="{Binding BtnName}"/>
+                                        <GridViewColumn Header="Действие">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <Button Content="Удалить" Click="DeleteButton" CommandParameter="{Binding}"/>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
+                        <Button HorizontalAlignment="Right" Margin="20" VerticalAlignment="Bottom" Content ="Записать кнопки в БД" Click="SaveListButtonInDB"/>
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>Удалить кнопки</TabItem.Header>
+                    <TabItem.Content>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" >Таблица сохраненных кнопок</TextBlock>
+                    
+                    </TabItem.Content>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>Общие настройки</TabItem.Header>
+                <TabItem.Content>
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" >Таблица сохраненных кнопок</TextBlock>
+
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

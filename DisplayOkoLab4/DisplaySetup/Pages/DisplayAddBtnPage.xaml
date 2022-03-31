@@ -1,0 +1,57 @@
+﻿<Page x:Class="VirtualDisplay.DisplaySetup.Pages.DisplayAddBtnPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:VirtualDisplay.DisplaySetup.Pages"
+      mc:Ignorable="d" Unloaded="OnUnloaded">
+    <Page.Resources>
+        <materialDesign:PackIcon x:Key="Yes"  Kind="BellOutline" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="LimeGreen" VerticalAlignment="Center"/>
+        <materialDesign:PackIcon x:Key="No"  Kind="BellOffOutline" Width="25" Height="25" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="OrangeRed" VerticalAlignment="Center"/>
+    </Page.Resources>
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="Btn_name_tb" TextWrapping="NoWrap" MaxLength="100"  materialDesign:HintAssist.Hint="Название кнопки"
+                         materialDesign:HintAssist.HelperText="После выбора названия кнопки нажмите на кнопку вызова"
+                     materialDesign:HintAssist.Foreground="Green"
+                         FontSize="16" Margin="50 10 10 50" Width="275" GotFocus="txtBox_NameOfButton_GotFocus" LostFocus="txtBox_NameOfButton_LostFocus" HorizontalAlignment="Left" KeyUp="ClickKeyUp" />
+                <Button Name="check_ico_tb" Focusable="False" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Cursor="Arrow" Visibility="Hidden">
+                    <DynamicResource ResourceKey="Yes"/>
+                </Button>
+                <TextBlock  Name="check_txt_tb" Style="{StaticResource MaterialDesignCaptionTextBlock}" Margin="0 50 0 0"/>
+            </StackPanel>
+            <DataGrid
+                Margin="80 10 10 10"
+                Name ="btn_list_dg"
+                ItemsSource="{Binding btn_list_dg}"
+                CanUserSortColumns="True"
+                CanUserAddRows="False"
+                materialDesign:DataGridAssist.CellPadding="13 8 8 8"
+                materialDesign:DataGridAssist.ColumnHeaderPadding="8"
+                AutoGenerateColumns="False" IsReadOnly="True"
+                Grid.Row="1" Grid.Column="0"
+                Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalContentAlignment="Center"
+                AlternatingRowBackground="#FFFFFFFA">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Удалить из списка" Width="160">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Удалить"
+                                        Click="DeleteButtonFromList" Style="{StaticResource MaterialDesignFlatButton}" Foreground="#FF31577E"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <materialDesign:DataGridTextColumn
+                                          Binding="{Binding BtnDate}"
+                                          Header="Дата - время" Width="200"/>
+                    <materialDesign:DataGridTextColumn   
+                                          Binding="{Binding BtnName}"
+                                          Header="Название кнопки" Width="*"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+    </Grid>
+</Page>
